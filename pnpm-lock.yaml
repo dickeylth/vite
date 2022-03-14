@@ -115,9 +115,12 @@ importers:
 
   packages/playground/backend-integration:
     specifiers:
+      fast-glob: ^3.2.11
       tailwindcss: ^2.2.19
     dependencies:
       tailwindcss: 2.2.19_ts-node@10.4.0
+    devDependencies:
+      fast-glob: 3.2.11
 
   packages/playground/cli:
     specifiers: {}
@@ -128,12 +131,14 @@ importers:
   packages/playground/css:
     specifiers:
       css-dep: link:./css-dep
+      fast-glob: ^3.2.11
       less: ^4.1.2
       postcss-nested: ^5.0.6
       sass: ^1.43.4
       stylus: ^0.55.0
     devDependencies:
       css-dep: link:css-dep
+      fast-glob: 3.2.11
       less: 4.1.2
       postcss-nested: 5.0.6
       sass: 1.45.1
@@ -172,6 +177,9 @@ importers:
     devDependencies:
       cross-env: 7.0.3
 
+  packages/playground/env-nested:
+    specifiers: {}
+
   packages/playground/extensions:
     specifiers:
       vue: ^3.2.25
@@ -203,21 +211,33 @@ importers:
 
   packages/playground/json:
     specifiers:
+      json-module: file:./json-module
       vue: ^3.2.25
     devDependencies:
+      json-module: link:json-module
       vue: 3.2.26
+
+  packages/playground/json/json-module:
+    specifiers: {}
 
   packages/playground/legacy:
     specifiers:
       '@vitejs/plugin-legacy': workspace:*
+      express: ^4.17.1
     devDependencies:
       '@vitejs/plugin-legacy': link:../../plugin-legacy
+      express: 4.17.2
 
   packages/playground/lib:
     specifiers: {}
 
   packages/playground/multiple-entrypoints:
-    specifiers: {}
+    specifiers:
+      fast-glob: ^3.2.11
+      sass: ^1.43.4
+    devDependencies:
+      fast-glob: 3.2.11
+      sass: 1.45.1
 
   packages/playground/nested-deps:
     specifiers:
@@ -278,12 +298,14 @@ importers:
       dep-esbuild-plugin-transform: file:./dep-esbuild-plugin-transform
       dep-linked: link:./dep-linked
       dep-linked-include: link:./dep-linked-include
+      dep-not-js: file:./dep-not-js
       lodash-es: ^4.17.21
       nested-exclude: file:./nested-exclude
       phoenix: ^1.6.2
       react: ^17.0.2
       react-dom: ^17.0.2
       resolve-linked: workspace:0.0.0
+      url: ^0.11.0
       vue: ^3.2.25
       vuex: ^4.0.0
     dependencies:
@@ -294,12 +316,14 @@ importers:
       dep-esbuild-plugin-transform: link:dep-esbuild-plugin-transform
       dep-linked: link:dep-linked
       dep-linked-include: link:dep-linked-include
+      dep-not-js: link:dep-not-js
       lodash-es: 4.17.21
       nested-exclude: link:nested-exclude
       phoenix: 1.6.5
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
       resolve-linked: link:../resolve-linked
+      url: 0.11.0
       vue: 3.2.26
       vuex: 4.0.2_vue@3.2.26
     devDependencies:
@@ -325,6 +349,9 @@ importers:
       react: 17.0.2
     dependencies:
       react: 17.0.2
+
+  packages/playground/optimize-deps/dep-not-js:
+    specifiers: {}
 
   packages/playground/optimize-deps/nested-exclude:
     specifiers:
@@ -735,9 +762,10 @@ importers:
 
   packages/vite:
     specifiers:
-      '@ampproject/remapping': ^1.1.1
+      '@ampproject/remapping': ^2.1.0
       '@babel/parser': ^7.17.0
       '@babel/types': ^7.17.0
+      '@jridgewell/trace-mapping': ^0.3.2
       '@rollup/plugin-alias': ^3.1.9
       '@rollup/plugin-commonjs': ^21.0.1
       '@rollup/plugin-dynamic-import-vars': ^1.4.2
@@ -762,7 +790,6 @@ importers:
       acorn: ^8.7.0
       cac: 6.7.9
       chokidar: ^3.5.3
-      compression: ^1.7.4
       connect: ^3.7.0
       connect-history-api-fallback: ^1.6.0
       convert-source-map: ^1.8.0
@@ -770,7 +797,7 @@ importers:
       cross-spawn: ^7.0.3
       debug: ^4.3.3
       dotenv: ^14.3.2
-      dotenv-expand: ^6.0.1
+      dotenv-expand: ^5.1.0
       es-module-lexer: ^0.9.3
       esbuild: ^0.14.14
       estree-walker: ^2.0.2
@@ -790,18 +817,17 @@ importers:
       picocolors: ^1.0.0
       postcss: ^8.4.6
       postcss-import: ^14.0.2
-      postcss-load-config: ^3.1.1
+      postcss-load-config: ^3.1.3
       postcss-modules: ^4.3.0
       resolve: ^1.22.0
       resolve.exports: ^1.1.0
       rollup: ^2.59.0
       rollup-plugin-license: ^2.6.1
       sirv: ^2.0.2
-      source-map-js: ^1.0.2
       source-map-support: ^0.5.21
       strip-ansi: ^6.0.1
       terser: ^5.10.0
-      tsconfck: 1.1.2
+      tsconfck: ^1.2.0
       tslib: ^2.3.1
       types: link:./types
       ws: ^8.5.0
@@ -813,9 +839,10 @@ importers:
     optionalDependencies:
       fsevents: 2.3.2
     devDependencies:
-      '@ampproject/remapping': 1.1.1
+      '@ampproject/remapping': 2.1.0
       '@babel/parser': 7.17.0
       '@babel/types': 7.17.0
+      '@jridgewell/trace-mapping': 0.3.2
       '@rollup/plugin-alias': 3.1.9_rollup@2.62.0
       '@rollup/plugin-commonjs': 21.0.1_rollup@2.62.0
       '@rollup/plugin-dynamic-import-vars': 1.4.2_rollup@2.62.0
@@ -840,7 +867,6 @@ importers:
       acorn: 8.7.0
       cac: 6.7.9
       chokidar: 3.5.3
-      compression: 1.7.4
       connect: 3.7.0
       connect-history-api-fallback: 1.6.0
       convert-source-map: 1.8.0
@@ -848,7 +874,7 @@ importers:
       cross-spawn: 7.0.3
       debug: 4.3.3
       dotenv: 14.3.2
-      dotenv-expand: 6.0.1
+      dotenv-expand: 5.1.0
       es-module-lexer: 0.9.3
       estree-walker: 2.0.2
       etag: 1.8.1
@@ -865,16 +891,15 @@ importers:
       periscopic: 2.0.3
       picocolors: 1.0.0
       postcss-import: 14.0.2_postcss@8.4.6
-      postcss-load-config: 3.1.1_ts-node@10.4.0
+      postcss-load-config: 3.1.3_ts-node@10.4.0
       postcss-modules: 4.3.0_postcss@8.4.6
       resolve.exports: 1.1.0
       rollup-plugin-license: 2.6.1_rollup@2.62.0
       sirv: 2.0.2
-      source-map-js: 1.0.2
       source-map-support: 0.5.21
       strip-ansi: 6.0.1
       terser: 5.10.0_acorn@8.7.0
-      tsconfck: 1.1.2_typescript@4.5.4
+      tsconfck: 1.2.0_typescript@4.5.4
       tslib: 2.3.1
       types: link:types
       ws: 8.5.0
@@ -989,14 +1014,6 @@ packages:
       '@algolia/cache-common': 4.11.0
       '@algolia/logger-common': 4.11.0
       '@algolia/requester-common': 4.11.0
-    dev: true
-
-  /@ampproject/remapping/1.1.1:
-    resolution: {integrity: sha512-YVAcA4DKLOj296CF5SrQ8cYiMRiUGc2sqFpLxsDGWE34suHqhGP/5yMsDHKsrh8hs8I5TiRVXNwKPWQpX3iGjw==}
-    engines: {node: '>=6.0.0'}
-    dependencies:
-      '@jridgewell/resolve-uri': 3.0.3
-      sourcemap-codec: 1.4.8
     dev: true
 
   /@ampproject/remapping/2.1.0:
@@ -3109,7 +3126,7 @@ packages:
     resolution: {integrity: sha512-oagLNqpfNv7CvmyMoexMDNyVDSiq1rya0AEUgcLlNHdHgNl6U/hi8xY370n5y+ZIFEXOx0J4B1qF2NDjMRxklA==}
     engines: {node: '>=6.0.0'}
     dependencies:
-      pvutils: 1.0.17
+      pvutils: 1.1.3
     dev: true
 
   /assert-never/1.2.1:
@@ -4220,9 +4237,8 @@ packages:
       is-obj: 2.0.0
     dev: true
 
-  /dotenv-expand/6.0.1:
-    resolution: {integrity: sha512-GNHcCOyRKLCXWnH3L/+sJ04PQxxgTOZDCPuQQnqkqPMGIilyoxHZ2JUNmh2VWKCfzVKH/AZsqcbuSYlDDVb/xw==}
-    engines: {node: '>=12'}
+  /dotenv-expand/5.1.0:
+    resolution: {integrity: sha512-YXQl1DSa4/PQyRfgrv6aoNjhasp/p4qs9FjJ4q4cQk+8m4r6k4ZSiEyytKG8f8W9gi8WsQtIObNmKd+tMzNTmA==}
     dev: true
 
   /dotenv/14.3.2:
@@ -4818,7 +4834,6 @@ packages:
       glob-parent: 5.1.2
       merge2: 1.4.1
       micromatch: 4.0.4
-    dev: true
 
   /fast-glob/3.2.7:
     resolution: {integrity: sha512-rYGMRwip6lUMvYD3BTScMwT1HtAs2d71SMv66Vrxs0IekGZEjhM0pcMfjQPnknBt2zeCwQMEupiN02ZP4DiT1Q==}
@@ -4829,6 +4844,7 @@ packages:
       glob-parent: 5.1.2
       merge2: 1.4.1
       micromatch: 4.0.4
+    dev: true
 
   /fast-json-stable-stringify/2.1.0:
     resolution: {integrity: sha512-lhd/wF+Lk98HZoTCtlVraHtfh5XYijIjalXck7saUtuanSDyLMxnHhSXEDJqHxD7msR8D0uCmqlkwjCV8xvwHw==}
@@ -5157,7 +5173,6 @@ packages:
 
   /graceful-fs/4.2.9:
     resolution: {integrity: sha512-NtNxqUcXgpW2iMrfqSfR73Glt39K+BLwWsPs94yR63v45T0Wbej7eRmL5cWfwEgqXnmjQp3zaJTshdRW/qC2ZQ==}
-    dev: true
 
   /handlebars/4.7.7:
     resolution: {integrity: sha512-aAcXm5OAfE/8IXkcZvCepKU3VzW1/39Fb5ZuqMtgI/hT8X2YgoMvBY5dLhq/cpOvw7Lk1nK/UF71aLG/ZnVYRA==}
@@ -5169,7 +5184,7 @@ packages:
       source-map: 0.6.1
       wordwrap: 1.0.0
     optionalDependencies:
-      uglify-js: 3.14.5
+      uglify-js: 3.15.0
     dev: true
 
   /hard-rejection/2.1.0:
@@ -6148,7 +6163,7 @@ packages:
       '@types/node': 16.11.22
       chalk: 4.1.2
       ci-info: 3.3.0
-      graceful-fs: 4.2.8
+      graceful-fs: 4.2.9
       picomatch: 2.3.0
     dev: true
 
@@ -6333,7 +6348,7 @@ packages:
     dependencies:
       universalify: 2.0.0
     optionalDependencies:
-      graceful-fs: 4.2.8
+      graceful-fs: 4.2.9
 
   /jsonparse/1.3.1:
     resolution: {integrity: sha1-P02uSpH6wxX3EGL4UhzCOfE2YoA=}
@@ -6388,7 +6403,7 @@ packages:
       tslib: 2.3.1
     optionalDependencies:
       errno: 0.1.8
-      graceful-fs: 4.2.8
+      graceful-fs: 4.2.9
       image-size: 0.5.5
       make-dir: 2.1.0
       mime: 1.6.0
@@ -7358,8 +7373,8 @@ packages:
       yaml: 1.10.2
     dev: false
 
-  /postcss-load-config/3.1.1_ts-node@10.4.0:
-    resolution: {integrity: sha512-c/9XYboIbSEUZpiD1UQD0IKiUe8n9WHYV7YFe7X7J+ZwCsEKkUJSFWjS9hBU1RR9THR7jMXst8sxiqP0jjo2mg==}
+  /postcss-load-config/3.1.3_ts-node@10.4.0:
+    resolution: {integrity: sha512-5EYgaM9auHGtO//ljHH+v/aC/TQ5LHXtL7bQajNAUBKUVKiYE8rYpFms7+V26D9FncaGe2zwCoPQsFKb5zF/Hw==}
     engines: {node: '>= 10'}
     peerDependencies:
       ts-node: '>=9.0.0'
@@ -7673,6 +7688,10 @@ packages:
       once: 1.4.0
     dev: true
 
+  /punycode/1.3.2:
+    resolution: {integrity: sha1-llOgNvt8HuQjQvIyXM7v6jkmxI0=}
+    dev: false
+
   /punycode/2.1.1:
     resolution: {integrity: sha512-XRsRjdf+j5ml+y/6GKHPZbrF/8p2Yga0JPtdqTIY2Xe5ohJPD9saDJJLPvp9+NSBprVvevdXZybnj2cv8OEd0A==}
     engines: {node: '>=6'}
@@ -7694,8 +7713,8 @@ packages:
       tslib: 2.3.1
     dev: true
 
-  /pvutils/1.0.17:
-    resolution: {integrity: sha512-wLHYUQxWaXVQvKnwIDWFVKDJku9XDCvyhhxoq8dc5MFdIlRenyPI9eSfEtcvgHgD7FlvCyGAlWgOzRnZD99GZQ==}
+  /pvutils/1.1.3:
+    resolution: {integrity: sha512-pMpnA0qRdFp32b1sJl1wOJNxZLQ2cbQx+k6tjNtZ8CpvVhNqEPRgivZ2WOUev2YMajecdH7ctUPDvEe87nariQ==}
     engines: {node: '>=6.0.0'}
     dev: true
 
@@ -7708,6 +7727,12 @@ packages:
     resolution: {integrity: sha512-TIRk4aqYLNoJUbd+g2lEdz5kLWIuTMRagAXxl78Q0RiVjAOugHmeKNGdd3cwo/ktpf9aL9epCfFqWDEKysUlLQ==}
     engines: {node: '>=0.6'}
     dev: true
+
+  /querystring/0.2.0:
+    resolution: {integrity: sha1-sgmEkgO7Jd+CDadW50cAWHhSFiA=}
+    engines: {node: '>=0.4.x'}
+    deprecated: The querystring API is considered Legacy. new code should use the URLSearchParams API instead.
+    dev: false
 
   /queue-microtask/1.2.3:
     resolution: {integrity: sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==}
@@ -8609,7 +8634,7 @@ packages:
       detective: 5.2.0
       didyoumean: 1.2.2
       dlv: 1.1.3
-      fast-glob: 3.2.7
+      fast-glob: 3.2.11
       fs-extra: 10.0.0
       glob-parent: 6.0.2
       html-tags: 3.1.0
@@ -8653,7 +8678,7 @@ packages:
       detective: 5.2.0
       didyoumean: 1.2.2
       dlv: 1.1.3
-      fast-glob: 3.2.7
+      fast-glob: 3.2.11
       fs-extra: 10.0.0
       glob-parent: 6.0.2
       html-tags: 3.1.0
@@ -8914,8 +8939,8 @@ packages:
       yn: 3.1.1
     dev: true
 
-  /tsconfck/1.1.2_typescript@4.5.4:
-    resolution: {integrity: sha512-n6SkiUQ784Uu2pviyd0j2kspm/fipdjO5jZuR8zUHVVoQeRnR6BSV5zlbheDmpyP0lj7GvHWvFcaxxhUFrzQWQ==}
+  /tsconfck/1.2.0_typescript@4.5.4:
+    resolution: {integrity: sha512-uKBM6x6i5e7Tfof5Zhll2ypgYKwWZhsxsHOoCH/7enlcHjjlcZ8FnxFrqgVFtpN6ymzZX3zoDaVGIlkh/g4x6w==}
     engines: {node: ^12.20 || ^14.13.1 || >= 16}
     hasBin: true
     peerDependencies:
@@ -9035,8 +9060,8 @@ packages:
     resolution: {integrity: sha512-kMBmblijHJXyOpKzgDhKx9INYU4u4E1RPMB0HqmKSgWG8vEcf3exEfLh4FFfzd3xdQOw9EuIy/cP0akY6rHopQ==}
     dev: true
 
-  /uglify-js/3.14.5:
-    resolution: {integrity: sha512-qZukoSxOG0urUTvjc2ERMTcAy+BiFh3weWAkeurLwjrCba73poHmG3E36XEjd/JGukMzwTL7uCxZiAexj8ppvQ==}
+  /uglify-js/3.15.0:
+    resolution: {integrity: sha512-x+xdeDWq7FiORDvyIJ0q/waWd4PhjBNOm5dQUOq2AKC0IEjxOS66Ha9tctiVDGcRQuh69K7fgU5oRuTK4cysSg==}
     engines: {node: '>=0.8.0'}
     hasBin: true
     requiresBuild: true
@@ -9071,6 +9096,13 @@ packages:
     dependencies:
       punycode: 2.1.1
     dev: true
+
+  /url/0.11.0:
+    resolution: {integrity: sha1-ODjpfPxgUh63PFJajlW/3Z4uKPE=}
+    dependencies:
+      punycode: 1.3.2
+      querystring: 0.2.0
+    dev: false
 
   /utf8-byte-length/1.0.4:
     resolution: {integrity: sha1-9F8VDExm7uloGGUFq5P8u4rWv2E=}

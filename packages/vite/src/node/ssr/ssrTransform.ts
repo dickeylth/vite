@@ -12,7 +12,7 @@ import type {
 import { extract_names as extractNames } from 'periscopic'
 import { walk as eswalk } from 'estree-walker'
 import { combineSourcemaps } from '../utils'
-import type { RawSourceMap } from '@ampproject/remapping/dist/types/types'
+import type { RawSourceMap } from '@ampproject/remapping'
 
 type Node = _Node & {
   start: number
@@ -66,7 +66,7 @@ export async function ssrTransform(
   }
 
   function defineExport(position: number, name: string, local = name) {
-    s.appendRight(
+    s.appendLeft(
       position,
       `\nObject.defineProperty(${ssrModuleExportsKey}, "${name}", ` +
         `{ enumerable: true, configurable: true, get(){ return ${local} }});`
